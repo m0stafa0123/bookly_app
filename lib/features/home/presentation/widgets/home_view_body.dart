@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/features/home/presentation/widgets/custom_list_view_item.dart';
 import 'package:flutter_application_1/features/home/presentation/widgets/custome_app_bar.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -6,6 +7,7 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [CustomeAppBar()]);
+    return Column(children: [CustomeAppBar(), const CustomListItem()]);
   }
 }
+
