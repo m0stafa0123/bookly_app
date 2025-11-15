@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/utils/style.dart';
 
 class SlidingText extends StatelessWidget {
   final Animation<Offset> slidingAnimation;
@@ -16,9 +17,7 @@ class SlidingText extends StatelessWidget {
           child: Text(
             'Welcome to Bookly',
             textAlign: TextAlign.center,
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(color: Colors.white),
+            style: Style.mediamTitle,
           ),
         );
       },

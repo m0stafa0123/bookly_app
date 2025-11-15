@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/style.dart';
+import 'package:flutter_application_1/features/home/presentation/widgets/best_seller_list_view_item.dart';
 import 'package:flutter_application_1/features/home/presentation/widgets/custome_app_bar.dart';
 import 'package:flutter_application_1/features/home/presentation/widgets/feature_list_view.dart';
 
@@ -18,6 +19,7 @@ class HomeViewBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Text("Best Sellers", style: Style.mediamTitle),
         ),
+        BestSellerListViewItem(),
       ],
     );
   }
