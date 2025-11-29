@@ -17,7 +17,7 @@ class SlidingText extends StatelessWidget {
           child: Text(
             'Welcome to Bookly',
             textAlign: TextAlign.center,
-            style: Style.mediamTitle,
+            style: Style.textStyle20,
           ),
         );
       },
