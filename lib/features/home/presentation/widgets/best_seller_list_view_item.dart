@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/assets.dart';
 import 'package:flutter_application_1/core/utils/style.dart';
+import 'package:flutter_application_1/features/home/presentation/widgets/custome_rating_widget.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -45,8 +46,15 @@ class BestSellerListViewItem extends StatelessWidget {
                 'by Liu Cixin',
                 style: Style.textStyle16.copyWith(color: Colors.white70),
               ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  const Text('19.99\$', style: Style.textStyle20),
+                  const SizedBox(width: 35),
+                  const CustomeRatingWidget(),
+                ],
+              ),
             ],
-            
           ),
         ],
       ),
