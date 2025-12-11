@@ -9,12 +9,9 @@ class CustomeRatingWidget extends StatelessWidget {
       children: [
         const Icon(Icons.star, color: Colors.amber, size: 20),
         const SizedBox(width: 2),
-        Text('4.8', style: Style.textStyle20.copyWith(color: Colors.white)),
+        Text('4.8', style: Style.textStyle20),
         const SizedBox(width: 2),
-        Text(
-          ' (200)',
-          style: Style.textStyle16.copyWith(color: Colors.white70),
-        ),
+        Text('(200)', style: Style.textStyle16.copyWith(color: Colors.white70)),
       ],
     );
   }

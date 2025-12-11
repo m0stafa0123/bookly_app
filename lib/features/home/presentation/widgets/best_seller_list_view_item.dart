@@ -9,12 +9,12 @@ class BestSellerListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: 120,
+            width: 90,
             child: AspectRatio(
               aspectRatio: 2.5 / 4,
               child: Container(
@@ -50,7 +50,7 @@ class BestSellerListViewItem extends StatelessWidget {
               Row(
                 children: [
                   const Text('19.99\$', style: Style.textStyle20),
-                  const SizedBox(width: 35),
+                  const SizedBox(width: 25),
                   const CustomeRatingWidget(),
                 ],
               ),
