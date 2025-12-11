@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/assets.dart';
+import 'package:flutter_application_1/core/utils/routes.dart';
 import 'package:flutter_application_1/core/utils/style.dart';
 import 'package:flutter_application_1/features/home/presentation/widgets/custome_rating_widget.dart';
+import 'package:go_router/go_router.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -13,16 +15,21 @@ class BestSellerListViewItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 90,
-            child: AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  image: DecorationImage(
-                    image: AssetImage(AssetsData.test),
-                    fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              GoRouter.of(context).push(AppRoutes.kbookDetailsView);
+            },
+            child: SizedBox(
+              width: 90,
+              child: AspectRatio(
+                aspectRatio: 2.5 / 4,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    image: DecorationImage(
+                      image: AssetImage(AssetsData.test),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
