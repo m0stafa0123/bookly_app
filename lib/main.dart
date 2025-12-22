@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: kPrimryColor,
         textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
-      ),  
+      ),
     );
   }
 }

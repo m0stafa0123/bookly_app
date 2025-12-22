@@ -25,7 +25,12 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        SliverFillRemaining(child: BestSellerListViewItemBuilder()),
+        SliverFillRemaining(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: BestSellerListViewItemBuilder(),
+          ),
+        ),
       ],
     );
   }
