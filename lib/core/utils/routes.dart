@@ -5,30 +5,30 @@ import 'package:flutter_application_1/features/splash_screen/presentation/views/
 import 'package:go_router/go_router.dart';
 
 abstract class AppRoutes {
-  static const khomeView = '/homeView';
-  static const String kbookDetailsView = '/bookDetails';
+  static const String kSplashView = '/';
+  static const String khomeView = '/homeView'; 
+  static const String kbookDetailsView = '/bookDetailsView'; 
+  static const String kSearchView = '/searchView'; 
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
       GoRoute(
-        path: '/',
+        path: kSplashView,
         builder: (BuildContext context, GoRouterState state) {
           return const SplaashScreen();
         },
-        routes: <RouteBase>[
-          GoRoute(
-            path: khomeView,
-            builder: (BuildContext context, GoRouterState state) {
-              return const HomeView();
-            },
-          ),
-          GoRoute(
-            path: kbookDetailsView,
-            builder: (BuildContext context, GoRouterState state) {
-              return const BookDetailView();
-            },
-          ),
-        ],
+      ),
+      GoRoute(
+        path: khomeView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const HomeView();
+        },
+      ),
+      GoRoute(
+        path: kbookDetailsView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const BookDetailView();
+        },
       ),
     ],
   );
