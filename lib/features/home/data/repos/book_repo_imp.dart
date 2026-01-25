@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_application_1/core/errors/failure.dart';
 import 'package:flutter_application_1/core/utils/api_serivce.dart';
 import 'package:flutter_application_1/features/home/data/models/book_model/book_model.dart';
@@ -9,7 +10,7 @@ class BookRepoImp implements BookRepo {
 
   BookRepoImp({required this.apiSerice});
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBooksBestSeller() async {
+  Future<Either<Failure, List<BookModel>>> fetchBookNewest() async {
     try {
       var data = await apiSerice.get(
         endPoint: '/volumes?q=programming&filter=free-ebooks&sorting=newest',
@@ -20,12 +21,32 @@ class BookRepoImp implements BookRepo {
       }
       return Right(books);
     } catch (e) {
-      return Left(ServerFailure());
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
     }
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBooksFeauture() {
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModel>>> fetchBooksFeauture() async {
+    try {
+      var data = await apiSerice.get(
+        endPoint: '/volumes?q=programming&filter=free-ebooks',
+      );
+      List<BookModel> books = [];
+      for (var item in data["items"]) {
+        books.add(BookModel.fromJson(item));
+      }
+      return Right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
+    }
+
   }
 }
