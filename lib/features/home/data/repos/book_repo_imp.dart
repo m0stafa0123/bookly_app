@@ -1,12 +1,27 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_application_1/core/errors/failure.dart';
+import 'package:flutter_application_1/core/utils/api_serivce.dart';
 import 'package:flutter_application_1/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter_application_1/features/home/data/repos/book_repo.dart';
 
 class BookRepoImp implements BookRepo {
+  final ApiSerice apiSerice;
+
+  BookRepoImp({required this.apiSerice});
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBooksBestSeller() {
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModel>>> fetchBooksBestSeller() async {
+    try {
+      var data = await apiSerice.get(
+        endPoint: '/volumes?q=programming&filter=free-ebooks&sorting=newest',
+      );
+      List<BookModel> books = [];
+      for (var item in data["items"]) {
+        books.add(BookModel.fromJson(item));
+      }
+      return Right(books);
+    } catch (e) {
+      return Left(ServerFailure());
+    }
   }
 
   @override
