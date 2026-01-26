@@ -6,13 +6,13 @@ import 'package:flutter_application_1/features/home/data/models/book_model/book_
 import 'package:flutter_application_1/features/home/data/repos/book_repo.dart';
 
 class BookRepoImp implements BookRepo {
-  final ApiSerice apiSerice;
+  final ApiService apiService;
 
-  BookRepoImp({required this.apiSerice});
+  BookRepoImp(this.apiService);
   @override
   Future<Either<Failure, List<BookModel>>> fetchBookNewest() async {
     try {
-      var data = await apiSerice.get(
+      var data = await apiService.get(
         endPoint: '/volumes?q=programming&filter=free-ebooks&sorting=newest',
       );
       List<BookModel> books = [];
@@ -32,7 +32,7 @@ class BookRepoImp implements BookRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchBooksFeauture() async {
     try {
-      var data = await apiSerice.get(
+      var data = await apiService.get(
         endPoint: '/volumes?q=programming&filter=free-ebooks',
       );
       List<BookModel> books = [];
@@ -47,6 +47,5 @@ class BookRepoImp implements BookRepo {
         return Left(ServerFailure(e.toString()));
       }
     }
-
   }
 }

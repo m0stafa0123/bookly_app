@@ -6,8 +6,8 @@ import 'package:flutter_application_1/features/home/data/repos/book_repo.dart';
 part 'feature_books_state.dart';
 
 class FeatureBooksCubit extends Cubit<FeatureBooksState> {
-  FeatureBooksCubit({required this.bookRepo}) : super(FeatureBooksInitial());
-  final   BookRepo bookRepo;
+  FeatureBooksCubit( this.bookRepo) : super(FeatureBooksInitial());
+  final BookRepo bookRepo;
   Future<void> fetchFeatureBooks() async {
     emit(FeatureBooksLoading());
     var result = await bookRepo.fetchBooksFeauture();
