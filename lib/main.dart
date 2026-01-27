@@ -8,7 +8,6 @@ import 'package:flutter_application_1/features/home/presentation/view-model/newe
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 void main() {
   setup();
   runApp(const MyApp());
@@ -22,10 +21,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FeatureBooksCubit( getIt.get<BookRepoImp>()),
+          create: (context) =>
+              FeatureBooksCubit(getIt.get<BookRepoImp>())..fetchFeatureBooks(),
         ),
         BlocProvider(
-          create: (context) => NewestBooksCubit( getIt.get<BookRepoImp>()),
+          create: (context) => NewestBooksCubit(getIt.get<BookRepoImp>()),
         ),
       ],
       child: MaterialApp.router(
@@ -33,9 +33,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: kPrimryColor,
-          textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+          textTheme: GoogleFonts.montserratTextTheme(
+            ThemeData.dark().textTheme,
+          ),
         ),
-      ), 
+      ),
     );
   }
 }

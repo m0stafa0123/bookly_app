@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/utils/assets.dart';
 
 class FeatureListViewItem extends StatelessWidget {
-  const FeatureListViewItem({super.key});
+  const FeatureListViewItem({super.key, required this.imageUrl});
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class FeatureListViewItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
           image: DecorationImage(
-            image: AssetImage(AssetsData.test),
+            image: NetworkImage(imageUrl),
             fit: BoxFit.cover,
           ),
         ),
