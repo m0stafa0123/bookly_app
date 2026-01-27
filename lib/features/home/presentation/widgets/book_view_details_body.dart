@@ -41,7 +41,9 @@ class BookViewDetailsBody extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16),
-              CustomeRatingWidget(mainAxisAlignment: MainAxisAlignment.center),
+              CustomeRatingWidget(
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
               SizedBox(height: 37),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
