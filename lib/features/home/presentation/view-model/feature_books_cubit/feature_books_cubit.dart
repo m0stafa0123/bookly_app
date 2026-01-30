@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_application_1/features/home/data/models/book_model/book_model.dart';
-import 'package:flutter_application_1/features/home/data/repos/book_repo.dart';
+import 'package:flutter_application_1/features/home/data/repos/book_repo_imp.dart';
 
 part 'feature_books_state.dart';
 
 class FeatureBooksCubit extends Cubit<FeatureBooksState> {
-  FeatureBooksCubit( this.bookRepo) : super(FeatureBooksInitial());
-  final BookRepo bookRepo;
+  FeatureBooksCubit(this.bookRepo) : super(FeatureBooksInitial());
+  final BookRepoImp bookRepo;
   Future<void> fetchFeatureBooks() async {
     emit(FeatureBooksLoading());
     var result = await bookRepo.fetchBooksFeauture();

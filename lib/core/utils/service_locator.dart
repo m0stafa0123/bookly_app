@@ -8,5 +8,4 @@ final getIt = GetIt.instance;
 void setup() {
   getIt.registerSingleton<ApiService>(ApiService(dio: Dio()));
   getIt.registerSingleton<BookRepoImp>(BookRepoImp(getIt.get<ApiService>()));
-  // getIt.registerLazySingleton<ApiService>(() => ApiService(dio: Dio()));
 }

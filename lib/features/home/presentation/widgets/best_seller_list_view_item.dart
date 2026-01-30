@@ -31,7 +31,8 @@ class BookListViewItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(18),
                       image: DecorationImage(
                         image: NetworkImage(
-                            book.volumeInfo.imageLinks.thumbnail),
+                          book.volumeInfo.imageLinks.thumbnail,
+                        ),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -40,34 +41,38 @@ class BookListViewItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 30),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Text(
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    book.volumeInfo.title!,
-                    style: Style.textStyle22,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      book.volumeInfo.title!,
+                      style: Style.textStyle22,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  book.volumeInfo.authors != null
-                      ? book.volumeInfo.authors![0]
-                      : 'No Author',
-                  style: Style.textStyle16.copyWith(color: Colors.white70),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    const Text('free', style: Style.textStyle20),
-                    const SizedBox(width: 25),
-                    CustomeRatingWidget(),
-                  ],
-                ),
-              ],
+                  const SizedBox(height: 2),
+                  Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    book.volumeInfo.authors != null
+                        ? book.volumeInfo.authors![0]
+                        : 'No Author',
+                    style: Style.textStyle16.copyWith(color: Colors.white70),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Text('free', style: Style.textStyle20),
+                      const SizedBox(width: 25),
+                      CustomeRatingWidget(),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         );

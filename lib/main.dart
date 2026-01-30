@@ -10,7 +10,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   setup();
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              FeatureBooksCubit(getIt.get<BookRepoImp>())..fetchFeatureBooks(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              NewestBooksCubit(getIt.get<BookRepoImp>())..fetchNewestBooks(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,25 +32,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              FeatureBooksCubit(getIt.get<BookRepoImp>())..fetchFeatureBooks(),
-        ),
-        BlocProvider(
-          create: (context) => NewestBooksCubit(getIt.get<BookRepoImp>())..fetchNewestBooks(),
-        ),
-      ],
-      child: MaterialApp.router(
-        routerConfig: AppRoutes.router,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: kPrimryColor,
-          textTheme: GoogleFonts.montserratTextTheme(
-            ThemeData.dark().textTheme,
-          ),
-        ),
+    return MaterialApp.router(
+      routerConfig: AppRoutes.router,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: kPrimryColor,
+        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
     );
   }
