@@ -5,7 +5,7 @@ import 'package:flutter_application_1/features/home/data/models/book_model/book_
 abstract class BookRepo {
   Future<Either<Failure, List<BookModel>>> fetchBooksFeauture();
   Future<Either<Failure, List<BookModel>>> fetchBookNewest();
-  Future<Either<Failure, List<BookModel>>> fetchBooNewestksByCategory(
-    String category,
-  );
+  Future<Either<Failure, List<BookModel>>> fetchBooNewestksByCategory({
+    required String category,
+  });
 }

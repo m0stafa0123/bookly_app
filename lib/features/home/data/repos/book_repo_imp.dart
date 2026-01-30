@@ -52,7 +52,7 @@ class BookRepoImp implements BookRepo {
 
   @override
   Future<Either<Failure, List<BookModel>>> fetchBooNewestksByCategory(
-    String category,
+   {required String category}
   ) async {
     try {
       var data = await apiService.get(
